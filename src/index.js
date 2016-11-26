@@ -1,3 +1,6 @@
+/* global readline, print*/
+const foo = require('./helper');
+
 const n = parseInt(readline());
 for (let i = 0; i < n; ++i) {
 	const inputs = readline().split(' ');
