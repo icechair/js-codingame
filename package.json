@@ -1,0 +1,21 @@
+{
+  "name": "codingame",
+  "version": "1.0.0",
+  "description": "environment for building codingame solutions",
+  "main": "index.js",
+  "repository": "https://github.com/icechair/codingame.git",
+  "author": "Martin Gabel <martin.gabel@icechair.de>",
+  "license": "MIT",
+  "devDependencies": {
+    "google-closure-compiler": "^20161024.3.0",
+    "nodemon": "^1.11.0",
+    "webpack": "^1",
+    "webpack-closure-compiler": "^2.1.2"
+  },
+  "dependencies": {
+    "ramda": "^0.22.1"
+  },
+  "scripts": {
+    "build": "webpack --watch"
+  }
+}

@@ -1,0 +1,1 @@
+(function(d){function a(b){if(e[b])return e[b].a;var c=e[b]={a:{},id:b,loaded:!1};d[b].call(c.a,c,c.a,a);c.loaded=!0;return c.a}var e={};a.c=d;a.b=e;a.p="";return a(0)})([function(){for(var d=parseInt(readline()),a=0;a<d;++a)readline();print("hallo")}]);
