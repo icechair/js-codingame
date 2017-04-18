@@ -8,12 +8,11 @@
   "license": "MIT",
   "devDependencies": {
     "google-closure-compiler": "^20161024.3.0",
+    "standard": "^10.0.2",
     "webpack": "^1",
     "webpack-closure-compiler": "^2.1.2"
   },
-  "dependencies": {
-    "ramda": "^0.22.1"
-  },
+  "dependencies": {},
   "scripts": {
     "build": "webpack --watch"
   }
