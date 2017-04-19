@@ -9,11 +9,13 @@
   "devDependencies": {
     "google-closure-compiler": "^20161024.3.0",
     "standard": "^10.0.2",
+    "tape": "^4.6.3",
     "webpack": "^1",
     "webpack-closure-compiler": "^2.1.2"
   },
   "dependencies": {},
   "scripts": {
-    "build": "webpack --watch"
+    "build": "webpack --watch",
+    "test": "tape src/**/*.test.js"
   }
 }
