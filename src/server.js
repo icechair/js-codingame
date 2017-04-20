@@ -1,8 +1,10 @@
-debugger
 const referee = require('./referee')
-console.log(referee.getFrameDataForView())
+console.log(referee.getInputForPlayer(0, 0))
 referee.handlePlayerOutput(0, 0, 0, ['FASTER'])
 referee.handlePlayerOutput(0, 0, 1, ['FASTER'])
 referee.updateGame()
-console.log(referee.getFrameDataForView())
+console.log(referee.getInputForPlayer(0, 0))
+referee.handlePlayerOutput(0, 0, 0, ['FASTER'])
+referee.handlePlayerOutput(0, 0, 1, ['FASTER'])
 referee.updateGame()
+console.log(referee.getInputForPlayer(0, 0))

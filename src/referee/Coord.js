@@ -1,5 +1,4 @@
 const c = require('./constants')
-const Cube = require('./Cube')
 
 function Offset (x, y) {
   if (isNaN(x)) throw new Error('x is NaN')
@@ -34,10 +33,7 @@ Offset.prototype.add = function (b) {
 }
 
 Offset.prototype.neighbour = function (orientation) {
-  if (this.y % 2 === 1) {
-    return this.add(DIRECTIONS_ODD[orientation])
-  }
-  return this.add(DIRECTIONS_EVEN[orientation])
+  return this.toCube().neighbour(orientation).toOffset()
 }
 
 Offset.prototype.isInsideMap = function () {
@@ -63,14 +59,47 @@ Offset.prototype.toString = function () {
   return `Offset(${this.x}, ${this.y})`
 }
 
-const DIRECTIONS_EVEN = [
-  new Offset(1, 0), new Offset(0, -1), new Offset(-1, -1),
-  new Offset(-1, 0), new Offset(-1, 1), new Offset(0, 1)
+function Cube (x, y, z) {
+  if (isNaN(x)) throw new Error('x is NaN')
+  if (isNaN(y)) throw new Error('y is NaN')
+  if (isNaN(z)) throw new Error('z is NaN')
+  this.x = x
+  this.y = y
+  this.z = z
+}
+
+Cube.prototype.toOffset = function () {
+  const x = this.x + (this.z - (this.z & 1)) / 2
+  const y = this.z
+  return new Offset(x, y)
+}
+
+Cube.prototype.add = function (b) {
+  const x = this.x + b.x
+  const y = this.y + b.y
+  const z = this.z + b.z
+  return new Cube(x, y, z)
+}
+
+Cube.prototype.neighbour = function (orientation) {
+  return this.add(DIRECTIONS[orientation])
+}
+
+Cube.prototype.distanceTo = function (b) {
+  return Math.max(
+    Math.abs(this.x - b.x),
+    Math.abs(this.y - b.y),
+    Math.abs(this.z - b.z)
+  )
+}
+
+Cube.prototype.toString = function () {
+  return `Cube(${this.x}, ${this.y}, ${this.z})`
+}
+
+const DIRECTIONS = [
+  new Cube(1, -1, 0), new Cube(1, 0, -1), new Cube(0, 1, -1),
+  new Cube(-1, 1, 0), new Cube(-1, 0, 1), new Cube(0, -1, 1)
 ]
 
-const DIRECTIONS_ODD = [
-  new Offset(1, 0), new Offset(1, -1), new Offset(0, -1),
-  new Offset(-1, 0), new Offset(0, 1), new Offset(1, 1)
-]
-
-module.exports = Offset
+module.exports = {Cube, Offset}

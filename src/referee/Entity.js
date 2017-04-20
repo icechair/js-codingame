@@ -1,5 +1,5 @@
 const h = require('./helper')
-const Offset = require('./Offset')
+const Offset = require('./Coord').Offset
 
 let UNIQUE_ENTITY_ID = 0
 
@@ -15,7 +15,7 @@ Entity.prototype.toString = function () {
   return `${this.type}(${this.id}, ${this.position})`
 }
 
-Entity.prototype.toViewString = function (arg1, arg2, arg3, arg4) {
+Entity.prototype.toPlayerString = function (arg1, arg2, arg3, arg4) {
   return h.join(this.id, this.type, this.position.x, this.position.y, arg1, arg2, arg3, arg4)
 }
 

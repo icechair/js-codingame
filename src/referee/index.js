@@ -111,6 +111,7 @@ const prepare = () => {
 const getExpectedOutputLineCountForPlayer = idx => players[idx].shipsAlive.length
 
 const handlePlayerOutput = (frame, round, playerIdx, outputs) => {
+  prepare()
   const player = players[playerIdx]
   const shipsIt = player.shipsAlive.values()
   try {
@@ -462,16 +463,16 @@ const getInputForPlayer = (round, playerIdx) => {
       }
     }
     if (visible) {
-      data.add(mine.toPlayerString(playerIdx))
+      data.push(mine.toPlayerString(playerIdx))
     }
   }
 
   for (let ball of cannonballs) {
-    data.add(ball.toPlayerString(playerIdx))
+    data.push(ball.toPlayerString(playerIdx))
   }
 
   for (let barrel of barrels) {
-    data.add(barrel.toPlayerString(playerIdx))
+    data.push(barrel.toPlayerString(playerIdx))
   }
 
   data.unshift('' + data.length)

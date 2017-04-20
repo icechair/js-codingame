@@ -1,6 +1,6 @@
 const c = require('./constants')
 const Entity = require('./Entity')
-const Offset = require('./Offset')
+const Offset = require('./Coord').Offset
 
 function Ship (x, y, orientation, owner) {
   Entity.call(this, c.SHIP, x, y)
